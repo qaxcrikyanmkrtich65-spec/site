@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0f19">
+<title>Մոբիլաբ — Աքսեսուարներ Գյումրիում</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top__in">
+    <a class="logo" href="#"><span class="logo__m">M</span><span>Մոբիլաբ</span></a>
+    <label class="search search--desk">
+      <input id="q" type="search" placeholder="Որոնել ապրանք…" autocomplete="off">
+    </label>
+    <button class="cartbtn" id="openCart" aria-label="Բացել զամբյուղը">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+      <b id="cnt">0</b>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>Աքսեսուարներ քո հեռախոսի համար</h1>
+    <p>Պատյաններ, ապակիներ, լիցքավորիչներ և մալուխներ՝ առաքում Գյումրիում 1–2 ժամում։</p>
+    <ul class="perks">
+      <li>Վճարում՝ ստանալիս</li>
+      <li>Առաքում Գյումրիում</li>
+      <li><a href="tel:+37444535454">044 53 54 54</a></li>
+    </ul>
+  </div>
+</section>
+
+<main class="wrap">
+  <label class="search search--mob"><input id="q2" type="search" placeholder="Որոնել ապրանք…" autocomplete="off"></label>
+  <nav class="chips" id="chips" aria-label="Կատեգորիաներ"></nav>
+  <div class="grid" id="grid"></div>
+  <p class="empty" id="empty" hidden>Ապրանք չի գտնվել։ Փորձեք այլ բառ կամ կատեգորիա։</p>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <span>© 2026 Մոբիլաբ · Առցանց խանութ, Գյումրի</span>
+    <button class="linkbtn" id="openAdmin">Ադմին</button>
+  </div>
+</footer>
+
+<div class="veil" id="veil"></div>
+
+<!-- Զամբյուղ -->
+<aside class="drawer" id="cart" aria-hidden="true">
+  <div class="sheet__head"><h2>Զամբյուղ</h2><button class="x" data-close aria-label="Փակել">✕</button></div>
+  <div class="drawer__body" id="cartBody"></div>
+  <form class="checkout" id="form" novalidate hidden>
+    <div class="sum"><span>Ընդամենը</span><b id="total">0 ֏</b></div>
+    <input name="name" placeholder="Անուն Ազգանուն" autocomplete="name" required>
+    <input name="phone" type="tel" placeholder="Հեռախոսահամար" autocomplete="tel" required>
+    <input name="address" placeholder="Հասցե Գյումրիում" autocomplete="street-address" required>
+    <select name="change"><option>Ճշգրիտ գումար</option><option>Մանր դրամ պետք է</option></select>
+    <p class="err" id="err"></p>
+    <button class="btn btn--go" type="submit">Հաստատել պատվերը</button>
+    <p class="note">Վճարումը կանխիկ է՝ ապրանքը ստանալիս։</p>
+  </form>
+</aside>
+
+<!-- Ապրանքի էջ -->
+<div class="modal" id="detail" aria-hidden="true"><div class="sheet" id="detailBody"></div></div>
+
+<!-- Հաջողություն -->
+<div class="modal" id="done" aria-hidden="true"><div class="sheet" id="doneBody"></div></div>
+
+<!-- Ադմին -->
+<div class="modal" id="admin" aria-hidden="true">
+  <div class="sheet sheet--wide">
+    <div class="sheet__head"><h2>Ադմին վահանակ</h2><button class="x" data-close aria-label="Փակել">✕</button></div>
+    <form class="aform" id="pform">
+      <h3 id="pformTitle">Նոր ապրանք</h3>
+      <input name="name" placeholder="Անվանում *" required>
+      <select name="category"></select>
+      <input name="price" type="number" min="0" placeholder="Գին (֏) *" required>
+      <input name="oldPrice" type="number" min="0" placeholder="Հին գին (ըստ ցանկության)">
+      <input name="tag" placeholder="Պիտակ (օր.՝ Զեղչ)">
+      <input name="image" placeholder="Նկարի հղում https://…">
+      <textarea name="description" rows="2" placeholder="Նկարագրություն"></textarea>
+      <div class="aform__btns"><button type="button" class="btn btn--ghost" id="pcancel" hidden>Չեղարկել</button><button class="btn btn--go" type="submit">Պահպանել</button></div>
+    </form>
+    <h3 class="h3">Ապրանքներ</h3><div id="plist"></div>
+    <h3 class="h3">Պատվերներ</h3><div id="olist"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
